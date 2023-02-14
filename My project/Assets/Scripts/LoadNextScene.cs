@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StartButton : MonoBehaviour
+public class LoadNextScene : MonoBehaviour
 {
     // Start is called before the first frame update
+    public string m_SceneName;
     void Start()
     {
         
@@ -19,6 +20,11 @@ public class StartButton : MonoBehaviour
 
     public void GoToNextScene()
     {
-        SceneManager.LoadScene("PlayerTestScene");
+        SceneManager.LoadScene(m_SceneName);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        GoToNextScene();
     }
 }
