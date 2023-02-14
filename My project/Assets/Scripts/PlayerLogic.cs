@@ -13,6 +13,12 @@ public class PlayerLogic : MonoBehaviour
     private float m_MaxAttackCoolDownTime;
     private float m_AttackCoolDownTime;
 
+    //sprint
+    private float m_MaxSprintTime;
+    private float m_CurrentSprintTime;
+    private float m_MaxSprintCoolDown;
+    private float m_sprintCoolDown;
+
     private float m_AttackTime;//To Replace With Animation
 
     private StarterAssetsInputs _input;
@@ -22,11 +28,16 @@ public class PlayerLogic : MonoBehaviour
     {
         m_Health = 3;
         m_MaxInvincibiltyTimeAfterAttack = 1.5f;
-        m_MaxAttackCoolDownTime = 1.0f;
+        m_MaxAttackCoolDownTime = 0.6f;
         m_AttackCoolDownTime = 0;
         m_InvincibiltyTime = 0;
         _input = GetComponent<StarterAssetsInputs>();
         m_AttackTime = 0;
+
+        m_MaxSprintTime = 0.3f;
+        m_CurrentSprintTime = m_MaxSprintTime;
+        m_MaxSprintCoolDown = 0.7f;
+        m_sprintCoolDown = 0;
     }
 
     // Update is called once per frame
@@ -56,6 +67,8 @@ public class PlayerLogic : MonoBehaviour
             }
         }
 
+        SprintTimers();
+
         //To Replace with Animation end
         if (m_AttackTime > 0)
         {
@@ -74,6 +87,39 @@ public class PlayerLogic : MonoBehaviour
             Debug.Log("Damage");
             --m_Health;
             m_InvincibiltyTime = m_MaxInvincibiltyTimeAfterAttack;
+        }
+    }
+
+    public float GetSprintTime()
+    {
+        return m_CurrentSprintTime;
+    }
+
+    private void SprintTimers()
+    {
+        if (_input.sprint)
+        {
+            m_CurrentSprintTime -= Time.deltaTime;
+            if (m_CurrentSprintTime < 0)
+            {
+                m_CurrentSprintTime = 0;
+                m_sprintCoolDown = m_MaxSprintCoolDown;
+            }
+        }
+
+        if (m_sprintCoolDown > 0)
+        {
+            m_sprintCoolDown -= Time.deltaTime;
+            if (m_sprintCoolDown < 0)
+            {
+                m_sprintCoolDown = 0;
+                m_CurrentSprintTime = m_MaxSprintTime;
+            }
+        }
+
+        if (!_input.sprint && m_CurrentSprintTime > 0)
+        {
+            m_CurrentSprintTime = m_MaxSprintTime;
         }
     }
 

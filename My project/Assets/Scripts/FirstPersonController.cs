@@ -51,6 +51,8 @@ namespace StarterAssets
 		[Tooltip("How far in degrees can you move the camera down")]
 		public float BottomClamp = -90.0f;
 
+		public PlayerLogic playerLogic;
+
 		// cinemachine
 		private float _cinemachineTargetPitch;
 
@@ -154,7 +156,7 @@ namespace StarterAssets
 		private void Move()
 		{
 			// set target speed based on move speed, sprint speed and if sprint is pressed
-			float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
+			float targetSpeed = _input.sprint && playerLogic.GetSprintTime() > 0 ? SprintSpeed : MoveSpeed;
 
 			// a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
@@ -195,8 +197,17 @@ namespace StarterAssets
 			}
 
 			// move the player
-			_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
-		}
+			//if (_input.sprint && playerLogic.GetSprintTime() > 0)
+			//{
+   //             _controller.Move(inputDirection.normalized * -1 * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+   //         }
+			//else
+			//{
+   //             _controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+   //         }
+
+            _controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+        }
 
 		private void JumpAndGravity()
 		{
@@ -211,18 +222,18 @@ namespace StarterAssets
 					_verticalVelocity = -2f;
 				}
 
-				// Jump
-				if (_input.jump && _jumpTimeoutDelta <= 0.0f)
-				{
-					// the square root of H * -2 * G = how much velocity needed to reach desired height
-					_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
-				}
+				//// Jump
+				//if (_input.jump && _jumpTimeoutDelta <= 0.0f)
+				//{
+				//	// the square root of H * -2 * G = how much velocity needed to reach desired height
+				//	_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+				//}
 
-				// jump timeout
-				if (_jumpTimeoutDelta >= 0.0f)
-				{
-					_jumpTimeoutDelta -= Time.deltaTime;
-				}
+				//// jump timeout
+				//if (_jumpTimeoutDelta >= 0.0f)
+				//{
+				//	_jumpTimeoutDelta -= Time.deltaTime;
+				//}
 			}
 			else
 			{
