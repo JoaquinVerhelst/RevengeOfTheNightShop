@@ -9,18 +9,21 @@ public class PlayerLogic : MonoBehaviour
 {
     private int m_Health;
 
+    //Invincibilty Frames
     private float m_MaxInvincibiltyTimeAfterAttack;
     private float m_InvincibiltyTime;
+
+    //Attack
     private float m_MaxAttackCoolDownTime;
     private float m_AttackCoolDownTime;
+
+    private float m_AttackTime;//To Replace With Animation
 
     //sprint
     private float m_MaxSprintTime;
     private float m_CurrentSprintTime;
     private float m_MaxSprintCoolDown;
     private float m_sprintCoolDown;
-
-    private float m_AttackTime;//To Replace With Animation
 
     private StarterAssetsInputs _input;
 
@@ -55,35 +58,14 @@ public class PlayerLogic : MonoBehaviour
             _input.attack = false;
         }
 
-        if (m_AttackCoolDownTime > 0)
-        {
-            m_AttackCoolDownTime -= Time.deltaTime;
-            if (m_AttackCoolDownTime < 0)
-            {
-                m_AttackCoolDownTime = 0;
-            }
-        }
+        LowerTimer(m_AttackCoolDownTime);
 
-        if (m_InvincibiltyTime > 0)
-        {
-            m_InvincibiltyTime -= Time.deltaTime;
-            if (m_InvincibiltyTime < 0)
-            {
-                m_InvincibiltyTime = 0;
-            }
-        }
+        LowerTimer(m_InvincibiltyTime);
 
         SprintTimers();
 
         //To Replace with Animation end
-        if (m_AttackTime > 0)
-        {
-            m_AttackTime -= Time.deltaTime;
-            if (m_AttackTime < 0)
-            {
-                m_AttackTime = 0;
-            }
-        }
+        LowerTimer(m_AttackTime);
     }
 
     public void TakeDamage()
@@ -126,6 +108,18 @@ public class PlayerLogic : MonoBehaviour
         if (!_input.sprint && m_CurrentSprintTime > 0)
         {
             m_CurrentSprintTime = m_MaxSprintTime;
+        }
+    }
+
+    private void LowerTimer(float timer)
+    {
+        if (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            if (timer < 0)
+            {
+                timer = 0;
+            }
         }
     }
 
