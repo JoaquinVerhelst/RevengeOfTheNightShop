@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Windows;
+using UnityEngine.SceneManagement;
 
 public class PlayerLogic : MonoBehaviour
 {
@@ -43,6 +44,11 @@ public class PlayerLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (m_Health == 0)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
+
         if (_input.attack)
         {
             m_AttackTime = 0.5f;
