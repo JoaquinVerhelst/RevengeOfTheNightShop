@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1536
     height: 782
   m_ShowMode: 4
-  m_Title: Scene
+  m_Title: Game
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 99
+  controlID: 68
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 100
+  controlID: 69
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 101
+  controlID: 70
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -318,22 +318,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets/Enemy
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts
+  - Assets/Enemy
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Noah\Documents\RevengeOfTheNightShop\My project
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 306d0000
-    m_LastClickedID: 27952
-    m_ExpandedIDs: 000000007e6b0000
+    m_SelectedIDs: 746d0000
+    m_LastClickedID: 28020
+    m_ExpandedIDs: 00000000cc6b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -349,7 +349,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 0}
+      m_ClientGUIView: {fileID: 5}
     m_SearchString: 
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
@@ -361,7 +361,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000007e6b0000
+    m_ExpandedIDs: 00000000cc6b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -491,9 +491,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 007f0000
-      m_LastClickedID: 32512
-      m_ExpandedIDs: 4c5ffffff05fffff2e61ffffba62ffff1079ffff4e7fffff1e92ffff7ebcffff56bdffff22bfffffdabfffffeeceffffc0cfffff0cd1ffffc2d1ffff86d8ffff0cf0ffff76f1ffff8ef6ffff14fbffffc67700008c7b0000227f0000
+      m_SelectedIDs: f8200000
+      m_LastClickedID: 0
+      m_ExpandedIDs: 22d6ffff04d7ffff64ecffffb8ecffffc4eeffffcafaffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -776,9 +776,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 454.4466, y: 436.22626, z: 63.05857}
+    m_Target: {x: 24.703283, y: -22.049511, z: 7.748169}
     speed: 2
-    m_Value: {x: 454.4466, y: 436.22626, z: 63.05857}
+    m_Value: {x: 24.703283, y: -22.049511, z: 7.748169}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -825,13 +825,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.076732665, y: -0.00630138, z: 0.0004907386, w: 0.99704665}
+    m_Target: {x: -0.32142857, y: -0.36937556, z: 0.13789792, w: -0.8609674}
     speed: 2
-    m_Value: {x: 0.076731525, y: -0.006301286, z: 0.00049073127, w: 0.9970318}
+    m_Value: {x: -0.3214229, y: -0.36936903, z: 0.1378955, w: -0.8609522}
   m_Size:
-    m_Target: 702.7423
+    m_Target: 29.680902
     speed: 2
-    m_Value: 702.7423
+    m_Value: 28.402777
   m_Ortho:
     m_Target: 0
     speed: 2

@@ -45,7 +45,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void Update()
     {
-        //MoveTowardsPlayer();
+        MoveTowardsPlayer();
 
         toThrowTimer += Time.deltaTime;
 
