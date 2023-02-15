@@ -20,7 +20,8 @@ public class PlayerLogic : MonoBehaviour
     private float m_AttackTime;//To Replace With Animation
 
     //Sound
-    public PlayRandomSound m_randomSound;
+    public PlayRandomSound m_randomGlassSound;
+    public PlayRandomSound m_randomHurtSound;
 
     //sprint
     private float m_MaxSprintTime;
@@ -79,6 +80,7 @@ public class PlayerLogic : MonoBehaviour
         {
             Debug.Log("Damage");
             --m_Health;
+            m_randomHurtSound.playSound();
             m_InvincibiltyTime = m_MaxInvincibiltyTimeAfterAttack;
         }
     }
@@ -134,7 +136,7 @@ public class PlayerLogic : MonoBehaviour
         {
             Debug.Log("Hit");
             other.gameObject.GetComponent<EnemyHealth>().GetDamage();
-            m_randomSound.playSound();
+            m_randomGlassSound.playSound();
             m_AttackCoolDownTime = m_MaxAttackCoolDownTime;
         }
     }
