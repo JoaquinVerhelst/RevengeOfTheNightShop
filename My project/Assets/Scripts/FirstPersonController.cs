@@ -69,9 +69,17 @@ namespace StarterAssets
 		//Sound
 		public AudioSource m_WalkingSound;
 
-	
+        public enum GameState
+        {
+            Game,
+            Cutscene,
+        }
+
+		private GameState m_CurrentGameState;
+
+
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
-		private PlayerInput _playerInput;
+        private PlayerInput _playerInput;
 #endif
 		private CharacterController _controller;
 		private StarterAssetsInputs _input;
@@ -98,6 +106,8 @@ namespace StarterAssets
 			{
 				_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 			}
+
+			m_CurrentGameState = GameState.Cutscene;
 		}
 
 		private void Start()
@@ -119,14 +129,20 @@ namespace StarterAssets
 
 		private void Update()
 		{
-			JumpAndGravity();
-			GroundedCheck();
-			Move();
+			if (m_CurrentGameState == GameState.Game)
+			{
+				JumpAndGravity();
+				GroundedCheck();
+				Move();
+			}
 		}
 
 		private void LateUpdate()
 		{
-			CameraRotation();
+			if (m_CurrentGameState == GameState.Game)
+			{
+				CameraRotation();
+			}
 		}
 
 		private void GroundedCheck()
@@ -292,6 +308,11 @@ namespace StarterAssets
 
 			// when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
 			Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z), GroundedRadius);
+		}
+
+		public void changeGameState()
+		{
+			m_CurrentGameState = GameState.Game;
 		}
 	}
 }

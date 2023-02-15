@@ -88,6 +88,11 @@ public class PlayerLogic : MonoBehaviour
         }
     }
 
+    public void OneHitKill()
+    {
+        SceneManager.LoadScene("GameOver");
+    }
+
     public float GetSprintTime()
     {
         return m_CurrentSprintTime;

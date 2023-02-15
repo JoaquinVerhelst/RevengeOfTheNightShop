@@ -641,7 +641,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SceneName: EnemyTestScene
   m_AudioSource: {fileID: 574520271}
-  m_SoundClips: {fileID: 8300000, guid: 34e68708e94e81848b3fbf22093ab214, type: 3}
+  m_SoundClips: {fileID: 8300000, guid: 3e08a2b7f0bcfa349bc88401b1c962df, type: 3}
 --- !u!114 &1286254972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1201,7 +1201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SceneName: StartScene
   m_AudioSource: {fileID: 574520271}
-  m_SoundClips: {fileID: 8300000, guid: 34e68708e94e81848b3fbf22093ab214, type: 3}
+  m_SoundClips: {fileID: 8300000, guid: 3e08a2b7f0bcfa349bc88401b1c962df, type: 3}
 --- !u!114 &1749086146
 MonoBehaviour:
   m_ObjectHideFlags: 0
