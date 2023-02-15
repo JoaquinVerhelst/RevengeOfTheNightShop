@@ -36,6 +36,6 @@ public class LoadNextScene : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        GoToNextScene();
+        SceneManager.LoadScene(m_SceneName);
     }
 }

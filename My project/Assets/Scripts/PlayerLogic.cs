@@ -74,7 +74,8 @@ public class PlayerLogic : MonoBehaviour
 
     public void TakeDamage()
     {
-        if (m_InvincibiltyTime == 0)
+        //doesn't take damage during invincibilty frames and during dodge
+        if (m_InvincibiltyTime == 0 && !(!_input.sprint && m_CurrentSprintTime != m_MaxSprintTime))
         {
             Debug.Log("Damage");
             --m_Health;
