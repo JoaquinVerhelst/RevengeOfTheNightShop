@@ -64,13 +64,13 @@ public class AttackPlayer : MonoBehaviour
 
         Debug.Log("player check passed");
 
-        TestHealthScript testHealth = player.GetComponent<TestHealthScript>();
+        PlayerLogic playerLogic = player.GetComponent<PlayerLogic>();
 
-        if (testHealth == null) return;
+        if (playerLogic == null) return;
 
         Debug.Log("Damage player");
 
-        testHealth.TakeDamage(2);
+        playerLogic.TakeDamage();
     }
 
 
