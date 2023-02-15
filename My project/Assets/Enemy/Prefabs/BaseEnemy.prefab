@@ -327,6 +327,9 @@ GameObject:
   - component: {fileID: 684052681729921569}
   - component: {fileID: 684052681729921583}
   - component: {fileID: 914013007}
+  - component: {fileID: 3352435492400373110}
+  - component: {fileID: 248154047277060111}
+  - component: {fileID: 1243290790}
   m_Layer: 0
   m_Name: BaseEnemy
   m_TagString: Enemy
@@ -368,12 +371,12 @@ MonoBehaviour:
   throwableObject: {fileID: 764110296370252550, guid: f3238f47faa099d4ba16738579d062ab,
     type: 3}
   throwablePlacement: {fileID: 790412985928812046}
-  timerToThrow: 1
-  minDistanceToThrow: 3
-  maxDistanceToThrow: 30
-  firingAngle: 50
-  canThrow: 1
-  objectIsThrown: 0
+  timerToThrow: 3
+  minDistanceToThrow: 2
+  maxDistanceToThrow: 100
+  firingAngle: 30
+  isWalking: 1
+  timerToWander: 5
 --- !u!195 &684052681729921569
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -384,10 +387,10 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 2
+  m_Speed: 4
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 500
+  m_AngularSpeed: 1000
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -411,6 +414,48 @@ CapsuleCollider:
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &914013007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684052681729921571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 078b1fb4684932140a3d9d518e3d5eee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Health: 1
+--- !u!114 &3352435492400373110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684052681729921571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad288b7e22425724690a917e1d345888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  throwAnimTime: 0
+  isThrowAnimStarted: 0
+  objectIsThrown: 0
+--- !u!114 &248154047277060111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684052681729921571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21d0a0db14e7ec941b351ea7a95947d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wanderRadius: 50
+  wanderTimer: 10
+--- !u!114 &1243290790
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1413,7 +1458,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5190657909782126182}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1320753, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children:
