@@ -32,10 +32,12 @@ public class PlayerLogic : MonoBehaviour
 
     private StarterAssetsInputs _input;
 
+    public HealthVisuals m_Visuals;
+
     // Start is called before the first frame update
     void Start()
     {
-        m_Health = 3;
+        m_Health = 5;
         m_MaxInvincibiltyTimeAfterAttack = 1.5f;
         m_MaxAttackCoolDownTime = 0.6f;
         m_AttackCoolDownTime = 0;
@@ -80,6 +82,7 @@ public class PlayerLogic : MonoBehaviour
         {
             Debug.Log("Damage");
             --m_Health;
+            m_Visuals.ChangeImage(m_Health);
             m_randomHurtSound.playSound();
             m_InvincibiltyTime = m_MaxInvincibiltyTimeAfterAttack;
         }
