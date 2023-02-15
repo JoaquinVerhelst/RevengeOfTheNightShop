@@ -19,11 +19,15 @@ public class PlayerLogic : MonoBehaviour
 
     private float m_AttackTime;//To Replace With Animation
 
+    //Sound
+    public PlayRandomSound m_randomSound;
+
     //sprint
     private float m_MaxSprintTime;
     private float m_CurrentSprintTime;
     private float m_MaxSprintCoolDown;
     private float m_sprintCoolDown;
+
 
     private StarterAssetsInputs _input;
 
@@ -129,6 +133,7 @@ public class PlayerLogic : MonoBehaviour
         {
             Debug.Log("Hit");
             other.gameObject.GetComponent<EnemyHealth>().GetDamage();
+            m_randomSound.playSound();
             m_AttackCoolDownTime = m_MaxAttackCoolDownTime;
         }
     }
