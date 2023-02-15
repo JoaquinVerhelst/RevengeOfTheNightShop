@@ -19,11 +19,15 @@ public class PlayerLogic : MonoBehaviour
 
     private float m_AttackTime;//To Replace With Animation
 
+    //Sound
+    public PlayRandomSound m_randomSound;
+
     //sprint
     private float m_MaxSprintTime;
     private float m_CurrentSprintTime;
     private float m_MaxSprintCoolDown;
     private float m_sprintCoolDown;
+
 
     private StarterAssetsInputs _input;
 
@@ -58,14 +62,14 @@ public class PlayerLogic : MonoBehaviour
             _input.attack = false;
         }
 
-        LowerTimer(m_AttackCoolDownTime);
+        LowerTimer(ref m_AttackCoolDownTime);
 
-        LowerTimer(m_InvincibiltyTime);
+        LowerTimer(ref m_InvincibiltyTime);
 
         SprintTimers();
 
         //To Replace with Animation end
-        LowerTimer(m_AttackTime);
+        LowerTimer(ref m_AttackTime);
     }
 
     public void TakeDamage()
@@ -111,7 +115,7 @@ public class PlayerLogic : MonoBehaviour
         }
     }
 
-    private void LowerTimer(float timer)
+    private void LowerTimer(ref float timer)
     {
         if (timer > 0)
         {
@@ -129,6 +133,7 @@ public class PlayerLogic : MonoBehaviour
         {
             Debug.Log("Hit");
             other.gameObject.GetComponent<EnemyHealth>().GetDamage();
+            m_randomSound.playSound();
             m_AttackCoolDownTime = m_MaxAttackCoolDownTime;
         }
     }
