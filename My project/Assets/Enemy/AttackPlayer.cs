@@ -6,6 +6,7 @@ public class AttackPlayer : MonoBehaviour
 {
     private float attackTimer = 0;
     [SerializeField] private float timeToAttack = 1;
+
     public bool attackFlag;
     GameObject player;
 
@@ -20,6 +21,7 @@ public class AttackPlayer : MonoBehaviour
 
         }
 
+
     }
 
 
@@ -30,9 +32,15 @@ public class AttackPlayer : MonoBehaviour
         player = null;
     }
 
+    private void Start()
+    {
+
+    }
+
 
     private void Update()
     {
+
 
         if (attackFlag)
         {
@@ -41,15 +49,14 @@ public class AttackPlayer : MonoBehaviour
 
             if (attackTimer >= timeToAttack)
             {
-                Attack();
+                MeleeAttack();
                 attackTimer = 0;
             }
         }
 
+
     }
-
-
-    private void Attack()
+    private void MeleeAttack()
     {
         Debug.Log("Attacking");
 
@@ -61,13 +68,11 @@ public class AttackPlayer : MonoBehaviour
 
         if (testHealth == null) return;
 
-
         Debug.Log("Damage player");
 
         testHealth.TakeDamage(2);
-
-
     }
+
 
 
 
