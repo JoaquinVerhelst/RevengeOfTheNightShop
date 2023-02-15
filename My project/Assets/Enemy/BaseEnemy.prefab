@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 684052681729921583}
   m_Layer: 0
   m_Name: BaseEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,8 +110,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTransform: {fileID: 0}
-  bottle: {fileID: 0}
-  handTransform: {fileID: 790412985928812046}
+  throwableObject: {fileID: 0}
+  throwablePlacement: {fileID: 0}
+  timerToThrow: 3
+  minDistanceToThrow: 15
+  maxDistanceToThrow: 30
+  firingAngle: 45
+  gravity: 9.8
 --- !u!195 &684052681729921569
 NavMeshAgent:
   m_ObjectHideFlags: 0

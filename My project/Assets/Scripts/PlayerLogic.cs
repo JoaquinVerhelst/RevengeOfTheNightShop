@@ -58,14 +58,14 @@ public class PlayerLogic : MonoBehaviour
             _input.attack = false;
         }
 
-        LowerTimer(m_AttackCoolDownTime);
+        LowerTimer(ref m_AttackCoolDownTime);
 
-        LowerTimer(m_InvincibiltyTime);
+        LowerTimer(ref m_InvincibiltyTime);
 
         SprintTimers();
 
         //To Replace with Animation end
-        LowerTimer(m_AttackTime);
+        LowerTimer(ref m_AttackTime);
     }
 
     public void TakeDamage()
@@ -111,7 +111,7 @@ public class PlayerLogic : MonoBehaviour
         }
     }
 
-    private void LowerTimer(float timer)
+    private void LowerTimer(ref float timer)
     {
         if (timer > 0)
         {
