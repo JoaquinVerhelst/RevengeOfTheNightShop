@@ -6,6 +6,8 @@ public class ThrowableObjectCollision : MonoBehaviour
 {
     GameObject player;
     public bool isHit;
+    public AudioClip m_BottleHit;
+    public AudioClip m_BottleBreak;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -18,6 +20,7 @@ public class ThrowableObjectCollision : MonoBehaviour
         }
         else if (other.CompareTag("World"))
         {
+            AudioSource.PlayClipAtPoint(m_BottleBreak, this.gameObject.transform.position);
             Destroy(this.gameObject);
         }
 
@@ -28,11 +31,15 @@ public class ThrowableObjectCollision : MonoBehaviour
 
         if (player == null) return;
 
+        PlayerLogic playerLogic = player.GetComponent<PlayerLogic>();
 
-        TestHealthScript testHealth = player.GetComponent<TestHealthScript>();
-        if (testHealth == null) return;
+        if (playerLogic == null) return;
 
-        testHealth.TakeDamage(2);
+        Debug.Log("Damage player");
+
+        playerLogic.TakeDamage();
+
+        AudioSource.PlayClipAtPoint(m_BottleBreak, this.gameObject.transform.position);
 
         Destroy(this.gameObject);
     }

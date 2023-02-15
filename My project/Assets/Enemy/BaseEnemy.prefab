@@ -110,9 +110,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 967bb827556fe1c41a9b39f26e535f8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetTransform: {fileID: 0}
-  throwableObject: {fileID: 0}
-  throwablePlacement: {fileID: 0}
+  targetTransform: {fileID: 4319981415464907923, guid: bf354826eb39095499b5166026f7fcce,
+    type: 3}
+  throwableObject: {fileID: 7384981615355572200}
+  throwablePlacement: {fileID: 790412985928812046}
   timerToThrow: 3
   minDistanceToThrow: 15
   maxDistanceToThrow: 30

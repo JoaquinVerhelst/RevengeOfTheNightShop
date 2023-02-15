@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 369322552}
   - component: {fileID: 369322553}
   - component: {fileID: 5359676440394403028}
-  - component: {fileID: 7401008317326802076}
   m_Layer: 0
   m_Name: ThrowableObject
   m_TagString: Enemy
@@ -62,6 +61,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isHit: 0
+  m_BottleHit: {fileID: 8300000, guid: 4a13b0ce1636f2f45a47dd71dfffe193, type: 3}
+  m_BottleBreak: {fileID: 8300000, guid: a935856047df88b478065c783c042eda, type: 3}
 --- !u!54 &5359676440394403028
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -78,19 +79,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &7401008317326802076
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 764110296370252550}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.2, y: 1.2, z: 1.2}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3795015142878261634
 GameObject:
   m_ObjectHideFlags: 0
