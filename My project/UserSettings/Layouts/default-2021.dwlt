@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1536
     height: 782
   m_ShowMode: 4
-  m_Title: Scene
+  m_Title: Game
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -496,22 +496,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Enemy
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Enemy
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Noah\Documents\RevengeOfTheNightShop\My project
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 286d0000
-    m_LastClickedID: 27944
-    m_ExpandedIDs: 00000000766b0000
+    m_SelectedIDs: 746d0000
+    m_LastClickedID: 28020
+    m_ExpandedIDs: 00000000cc6b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -527,7 +527,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 0}
+      m_ClientGUIView: {fileID: 5}
     m_SearchString: 
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
@@ -539,7 +539,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000766b0000
+    m_ExpandedIDs: 00000000cc6b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -669,9 +669,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 406d0000
+      m_SelectedIDs: f8200000
       m_LastClickedID: 0
-      m_ExpandedIDs: 64f3ffffe2faffff
+      m_ExpandedIDs: 22d6ffff04d7ffff64ecffffb8ecffffc4eeffffcafaffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -954,9 +954,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 34.24366, y: -17.216404, z: 3.1629915}
+    m_Target: {x: 24.703283, y: -22.049511, z: 7.748169}
     speed: 2
-    m_Value: {x: 34.24366, y: -17.216404, z: 3.1629915}
+    m_Value: {x: 24.703283, y: -22.049511, z: 7.748169}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1003,13 +1003,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.17255521, y: 0.5808315, z: -0.12763421, w: 0.7852427}
+    m_Target: {x: -0.32142857, y: -0.36937556, z: 0.13789792, w: -0.8609674}
     speed: 2
-    m_Value: {x: 0.17407112, y: 0.5713564, z: -0.12555207, w: 0.79214126}
+    m_Value: {x: -0.3214229, y: -0.36936903, z: 0.1378955, w: -0.8609522}
   m_Size:
-    m_Target: 23.807772
+    m_Target: 29.680902
     speed: 2
-    m_Value: 22.782557
+    m_Value: 28.402777
   m_Ortho:
     m_Target: 0
     speed: 2
