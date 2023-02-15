@@ -13,6 +13,8 @@ namespace StarterAssets
 		public bool jump;
 		public bool sprint;
         public bool attack;
+		public bool reload;
+
 
         [Header("Movement Settings")]
 		public bool analogMovement;
@@ -49,6 +51,13 @@ namespace StarterAssets
 		{
 			AttackInput(value.isPressed);
 		}
+
+		public void OnReload(InputValue value)
+		{
+			ReloadInput(value.isPressed);
+		}
+
+
 #endif
 
 
@@ -76,8 +85,13 @@ namespace StarterAssets
 		{
 			attack = newAttackInput;
 		}
-		
-		private void OnApplicationFocus(bool hasFocus)
+
+        public void ReloadInput(bool newReloadInput)
+        {
+            reload = newReloadInput;
+        }
+
+        private void OnApplicationFocus(bool hasFocus)
 		{
 			SetCursorState(cursorLocked);
 		}

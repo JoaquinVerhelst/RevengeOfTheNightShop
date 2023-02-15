@@ -7,6 +7,11 @@ using UnityEngine.SceneManagement;
 
 public class PlayerLogic : MonoBehaviour
 {
+    //[SerializeField] GameObject bottlePrefab;
+    [SerializeField] Transform bottleTransform;
+    private GameObject currentBottle;
+
+
     private int m_Health;
 
     //Invincibilty Frames
@@ -30,6 +35,14 @@ public class PlayerLogic : MonoBehaviour
 
 
     private StarterAssetsInputs _input;
+    private ArmHandler armHandler;
+    private HandBottle handBottle;
+
+
+    private bool swing;
+    private bool swingEnd = true;
+    private bool swingStart = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +59,9 @@ public class PlayerLogic : MonoBehaviour
         m_CurrentSprintTime = m_MaxSprintTime;
         m_MaxSprintCoolDown = 0.7f;
         m_sprintCoolDown = 0;
+
+        armHandler = GetComponentInChildren<ArmHandler>();
+        handBottle = GetComponentInChildren<HandBottle>();
     }
 
     // Update is called once per frame
@@ -60,7 +76,44 @@ public class PlayerLogic : MonoBehaviour
         {
             m_AttackTime = 0.5f;
             _input.attack = false;
+
+
+            swing = true;
+            swingEnd = true;
+            swingStart = false;
         }
+
+        if (_input.reload)
+        {
+            Debug.Log("Reload");
+            handBottle.InstantiateBottle();
+
+            _input.reload = false;
+        }
+
+        if (swing)
+        {
+            if (swingEnd)
+            {
+                swingEnd = armHandler.SwingArmEnd();
+            }
+            else
+            {
+                swingStart = true;
+            }
+            if (swingStart)
+            {
+                swingStart = armHandler.SwingArmStart();
+
+                if (!swingStart)
+                {
+                    swing = false;
+                }
+            }
+
+        }
+
+
 
         LowerTimer(ref m_AttackCoolDownTime);
 
@@ -127,12 +180,13 @@ public class PlayerLogic : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerStay(Collider other) 
     {
-        if (other.tag == "Enemy" && m_AttackCoolDownTime == 0 && m_AttackTime != 0)
+        if (other.tag == "Enemy" && m_AttackCoolDownTime == 0 && m_AttackTime != 0) // --> Change layer to bottle layer????!!!!!   TODO  since we cant kill the big boi and only botles
         {
             Debug.Log("Hit");
             other.gameObject.GetComponent<EnemyHealth>().GetDamage();
+            currentBottle.GetComponent<HandBottle>().GetDestroyed();
             m_randomSound.playSound();
             m_AttackCoolDownTime = m_MaxAttackCoolDownTime;
         }
