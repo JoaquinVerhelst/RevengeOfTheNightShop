@@ -7,11 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerLogic : MonoBehaviour
 {
-    //[SerializeField] GameObject bottlePrefab;
-    [SerializeField] Transform bottleTransform;
-    private GameObject currentBottle;
-
-
     private int m_Health;
 
     //Invincibilty Frames
@@ -25,7 +20,8 @@ public class PlayerLogic : MonoBehaviour
     private float m_AttackTime;//To Replace With Animation
 
     //Sound
-    public PlayRandomSound m_randomSound;
+    public PlayRandomSound m_randomGlassSound;
+    public PlayRandomSound m_randomHurtSound;
 
     //sprint
     private float m_MaxSprintTime;
@@ -35,19 +31,13 @@ public class PlayerLogic : MonoBehaviour
 
 
     private StarterAssetsInputs _input;
-    private ArmHandler armHandler;
-    private HandBottle handBottle;
 
-
-    private bool swing;
-    private bool swingEnd = true;
-    private bool swingStart = false;
-
+    public HealthVisuals m_Visuals;
 
     // Start is called before the first frame update
     void Start()
     {
-        m_Health = 3;
+        m_Health = 5;
         m_MaxInvincibiltyTimeAfterAttack = 1.5f;
         m_MaxAttackCoolDownTime = 0.6f;
         m_AttackCoolDownTime = 0;
@@ -59,9 +49,6 @@ public class PlayerLogic : MonoBehaviour
         m_CurrentSprintTime = m_MaxSprintTime;
         m_MaxSprintCoolDown = 0.7f;
         m_sprintCoolDown = 0;
-
-        armHandler = GetComponentInChildren<ArmHandler>();
-        handBottle = GetComponentInChildren<HandBottle>();
     }
 
     // Update is called once per frame
@@ -76,44 +63,7 @@ public class PlayerLogic : MonoBehaviour
         {
             m_AttackTime = 0.5f;
             _input.attack = false;
-
-
-            swing = true;
-            swingEnd = true;
-            swingStart = false;
         }
-
-        if (_input.reload)
-        {
-            Debug.Log("Reload");
-            handBottle.InstantiateBottle();
-
-            _input.reload = false;
-        }
-
-        if (swing)
-        {
-            if (swingEnd)
-            {
-                swingEnd = armHandler.SwingArmEnd();
-            }
-            else
-            {
-                swingStart = true;
-            }
-            if (swingStart)
-            {
-                swingStart = armHandler.SwingArmStart();
-
-                if (!swingStart)
-                {
-                    swing = false;
-                }
-            }
-
-        }
-
-
 
         LowerTimer(ref m_AttackCoolDownTime);
 
@@ -127,12 +77,20 @@ public class PlayerLogic : MonoBehaviour
 
     public void TakeDamage()
     {
-        if (m_InvincibiltyTime == 0)
+        //doesn't take damage during invincibilty frames and during dodge
+        if (m_InvincibiltyTime == 0 && !(!_input.sprint && m_CurrentSprintTime != m_MaxSprintTime))
         {
             Debug.Log("Damage");
             --m_Health;
+            m_Visuals.ChangeImage(m_Health);
+            m_randomHurtSound.playSound();
             m_InvincibiltyTime = m_MaxInvincibiltyTimeAfterAttack;
         }
+    }
+
+    public void OneHitKill()
+    {
+        SceneManager.LoadScene("GameOver");
     }
 
     public float GetSprintTime()
@@ -180,14 +138,13 @@ public class PlayerLogic : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other) 
+    private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Enemy" && m_AttackCoolDownTime == 0 && m_AttackTime != 0) // --> Change layer to bottle layer????!!!!!   TODO  since we cant kill the big boi and only botles
+        if (other.tag == "Enemy" && m_AttackCoolDownTime == 0 && m_AttackTime != 0)
         {
             Debug.Log("Hit");
             other.gameObject.GetComponent<EnemyHealth>().GetDamage();
-            currentBottle.GetComponent<HandBottle>().GetDestroyed();
-            m_randomSound.playSound();
+            m_randomGlassSound.playSound();
             m_AttackCoolDownTime = m_MaxAttackCoolDownTime;
         }
     }
