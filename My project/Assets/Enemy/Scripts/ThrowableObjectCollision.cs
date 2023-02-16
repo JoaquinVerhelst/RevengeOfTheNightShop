@@ -12,6 +12,9 @@ public class ThrowableObjectCollision : MonoBehaviour
     [SerializeField] GameObject thisObject;
     [SerializeField] List<GameObject> ThrowableObjects = new List<GameObject>();
 
+    public AudioClip m_BottleHit;
+    public AudioClip m_BottleBreak;
+
     Vector3 targetTransform;
     float gravity = 9.81f;
     float firingAngle = 45f;
@@ -58,6 +61,7 @@ public class ThrowableObjectCollision : MonoBehaviour
         }
         else if (other.CompareTag("World"))
         {
+            AudioSource.PlayClipAtPoint(m_BottleBreak, this.gameObject.transform.position);
             thisObject.SetActive(false);
             particles.Play();
         }
@@ -74,6 +78,7 @@ public class ThrowableObjectCollision : MonoBehaviour
         collider.enabled = false;
         playerLogic.TakeDamage();
         thisObject.SetActive(false);
+        AudioSource.PlayClipAtPoint(m_BottleBreak, this.gameObject.transform.position);
         particles.Play();
     }
 
