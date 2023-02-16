@@ -69,13 +69,7 @@ namespace StarterAssets
 		//Sound
 		public AudioSource m_WalkingSound;
 
-        public enum GameState
-        {
-            Game,
-            Cutscene,
-        }
-
-		private GameState m_CurrentGameState;
+		public GameState m_State;
 
 
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
@@ -106,8 +100,6 @@ namespace StarterAssets
 			{
 				_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 			}
-
-			m_CurrentGameState = GameState.Cutscene;
 		}
 
 		private void Start()
@@ -129,7 +121,7 @@ namespace StarterAssets
 
 		private void Update()
 		{
-			if (m_CurrentGameState == GameState.Game)
+			if (m_State.GetCurrentState() == GameState.GameStates.Game)
 			{
 				JumpAndGravity();
 				GroundedCheck();
@@ -139,7 +131,7 @@ namespace StarterAssets
 
 		private void LateUpdate()
 		{
-			if (m_CurrentGameState == GameState.Game)
+			if (m_State.GetCurrentState() == GameState.GameStates.Game)
 			{
 				CameraRotation();
 			}
@@ -310,9 +302,5 @@ namespace StarterAssets
 			Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z), GroundedRadius);
 		}
 
-		public void changeGameState()
-		{
-			m_CurrentGameState = GameState.Game;
-		}
 	}
 }
