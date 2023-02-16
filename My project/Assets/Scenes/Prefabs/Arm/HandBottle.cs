@@ -12,15 +12,11 @@ public class HandBottle : MonoBehaviour
     //[SerializeField] GameObject thisObject;
     [SerializeField] List<GameObject> BottleObjects = new List<GameObject>();
 
-    GameObject currentBottle;
+    public GameObject currentBottle;
     int index;
 
     private void Start()
     {
-        //transform.localPosition = Vector3.zero;
-        //thisObectsParticles = GetComponent <ParticleSystem>();
-
-        
         particles = GetComponentInChildren<ParticleSystem>();
     }
 
@@ -29,18 +25,16 @@ public class HandBottle : MonoBehaviour
     {
         index = Random.Range(0, BottleObjects.Count);
         currentBottle = Instantiate(BottleObjects[index], this.transform);
-
-        ////currentBottle.gameObject.AddComponent<ParticleSystem>();
-        ////EmitParams current = particles.EmitPa
-
-        ////currentBottle.GetComponent<ParticleSystem>().Emit()
-
     }
 
     public void GetDestroyed()
     {
-        particles.Play();
-        Destroy(currentBottle);
+        if (currentBottle != null)
+        {
+            //particles.Play();
+            Destroy(currentBottle);
+        }
+
     }
 
     //TODO rotate the transform -> instead of destroying this object -> destroy the child (bottleObject)

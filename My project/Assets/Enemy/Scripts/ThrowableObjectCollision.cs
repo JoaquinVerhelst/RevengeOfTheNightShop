@@ -52,6 +52,14 @@ public class ThrowableObjectCollision : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //if (other.CompareTag("Bottle"))
+        //{
+        //    Debug.Log("bottle Hit");
+        //    player = other.gameObject;
+
+        //    thisObject.SetActive(false);
+        //    particles.Play();
+        //}
         if (other.CompareTag("Player"))
         {
             Debug.Log("Player Hit");
@@ -61,10 +69,11 @@ public class ThrowableObjectCollision : MonoBehaviour
         }
         else if (other.CompareTag("World"))
         {
-            AudioSource.PlayClipAtPoint(m_BottleBreak, this.gameObject.transform.position);
+            //AudioSource.PlayClipAtPoint(m_BottleBreak, this.gameObject.transform.position);
             thisObject.SetActive(false);
             particles.Play();
         }
+
 
     }
 
@@ -78,7 +87,7 @@ public class ThrowableObjectCollision : MonoBehaviour
         collider.enabled = false;
         playerLogic.TakeDamage();
         thisObject.SetActive(false);
-        AudioSource.PlayClipAtPoint(m_BottleBreak, this.gameObject.transform.position);
+        //AudioSource.PlayClipAtPoint(m_BottleBreak, this.gameObject.transform.position);
         particles.Play();
     }
 

@@ -4,14 +4,10 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    // Start is called before the first frame update
+
     public int m_Health = 1;
-    void Start()
-    {
 
-    }
 
-    // Update is called once per frame
     void Update()
     {
         if (m_Health == 0)
@@ -26,9 +22,10 @@ public class EnemyHealth : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
-        {
-            other.gameObject.GetComponent<PlayerLogic>().TakeDamage();
-        }
+        //if (other.tag == "Player")
+        //{
+        //    PlayerLogic logic = other.gameObject.GetComponent<PlayerLogic>();
+        //    logic.TakeDamage();
+        //}
     }
 }

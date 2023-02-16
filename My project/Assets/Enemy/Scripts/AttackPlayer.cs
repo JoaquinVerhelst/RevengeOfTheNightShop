@@ -40,15 +40,13 @@ public class AttackPlayer : MonoBehaviour
 
     private void Update()
     {
-
-
         if (attackFlag)
         {
-
             attackTimer += Time.deltaTime;
 
             if (attackTimer >= timeToAttack)
             {
+                Debug.Log("ATTACKIIIING");
                 MeleeAttack();
                 attackTimer = 0;
             }
@@ -60,7 +58,7 @@ public class AttackPlayer : MonoBehaviour
     {
         if (player == null) return;
 
-        PlayerLogic playerLogic = player.GetComponent<PlayerLogic>();
+        PlayerLogic playerLogic = player.GetComponentInParent<PlayerLogic>();
 
         if (playerLogic == null) return;
 
