@@ -28,7 +28,7 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] public float minDistanceToThrow = 15f;
     [SerializeField] public float maxDistanceToThrow = 30f;
     [SerializeField] public float firingAngle = 45f;
-
+    [SerializeField] public GameState gameState;
 
     private float walkResetTimer = 0;
     public bool isWalking = true;
@@ -60,58 +60,60 @@ void Start()
 
     private void Update()
     {
-        if (isAgro)
+        if (gameState.GetCurrentState() == GameState.GameStates.Game)
         {
-            if (CheckIfTargetIsInPOV(targetTransform))
+            if (isAgro)
             {
-                playerOutOfPOVTimer = 0;
+                if (CheckIfTargetIsInPOV(targetTransform))
+                {
+                    playerOutOfPOVTimer = 0;
+                    isAgro = true;
+                    isOutOfSight = false;
+
+                    throwableHandler.UpdateThrowing(cloneThrowable, targetTransform);
+                }
+                else
+                {
+                    isOutOfSight = true;
+                }
+                if (isWalking)
+                {
+                    agent.isStopped = false;
+                    MoveTowardsPlayer();
+                }
+
+            }
+            if (isOutOfSight)
+            {
+                playerOutOfPOVTimer += Time.deltaTime;
+
+                if (playerOutOfPOVTimer >= timerToWander)
+                {
+                    isAgro = false;
+                    wanderHandler.UpdateWander();
+                }
+            }
+            if (!isAgro && CheckIfTargetIsInPOV(targetTransform))
+            {
                 isAgro = true;
-                isOutOfSight = false;
 
-                throwableHandler.UpdateThrowing(cloneThrowable, targetTransform);
             }
-            else
+            if (throwableHandler.isThrowAnimStarted)
             {
-                isOutOfSight = true;
-            }
-            if (isWalking)
-            {
-                agent.isStopped = false;
-                MoveTowardsPlayer();
-            }
+                isWalking = false;
+                agent.isStopped = true;
+                walkResetTimer += Time.deltaTime;
 
-        }
-        if (isOutOfSight)
-        {
-            playerOutOfPOVTimer += Time.deltaTime;
+                if (walkResetTimer >= throwableHandler.throwAnimTime)
+                {
 
-            if (playerOutOfPOVTimer >= timerToWander)
-            {
-                isAgro = false;
-                wanderHandler.UpdateWander();
+                    walkResetTimer = 0;
+                    animator.SetBool("IsObjectThrown", true);
+                    throwableHandler.isThrowAnimStarted = false;
+                    isWalking = true;
+                }
             }
         }
-        if(!isAgro && CheckIfTargetIsInPOV(targetTransform))
-        {
-            isAgro = true;
-
-        }
-        if (throwableHandler.isThrowAnimStarted)
-        {
-            isWalking = false;
-            agent.isStopped = true;
-            walkResetTimer += Time.deltaTime;
-
-            if (walkResetTimer >= throwableHandler.throwAnimTime)
-            {
-
-                walkResetTimer = 0;
-                animator.SetBool("IsObjectThrown", true);
-                throwableHandler.isThrowAnimStarted = false;
-                isWalking = true;
-            }
-        }
-
 
     }
 

@@ -346,7 +346,7 @@ Transform:
   m_GameObject: {fileID: 684052681729921571}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 2.742}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 228586782972110902}
@@ -371,10 +371,11 @@ MonoBehaviour:
   throwableObject: {fileID: 764110296370252550, guid: f3238f47faa099d4ba16738579d062ab,
     type: 3}
   throwablePlacement: {fileID: 790412985928812046}
-  timerToThrow: 3
+  timerToThrow: 1
   minDistanceToThrow: 2
   maxDistanceToThrow: 100
   firingAngle: 30
+  gameState: {fileID: 0}
   isWalking: 1
   timerToWander: 5
 --- !u!195 &684052681729921569
@@ -387,7 +388,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 4
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 1000
@@ -425,7 +426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 078b1fb4684932140a3d9d518e3d5eee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Health: 1
+  m_Health: 100
 --- !u!114 &3352435492400373110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1486,7 +1487,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5561349426305759274, guid: 789687161b4c2a5428eb6844af537365, type: 3}
+  - {fileID: 2100000, guid: 63e9072b80e293c47ba806dad008bb5e, type: 2}
   - {fileID: 8748892135801146194, guid: 789687161b4c2a5428eb6844af537365, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
