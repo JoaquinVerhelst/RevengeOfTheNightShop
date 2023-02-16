@@ -3,7 +3,12 @@ guid: ab17f78d6c916aa4fa5275f77e3b72e2
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cigarette_Lighters
+    second: {fileID: 2100000, guid: 5677ba7a5f451384a99568dcb18625d1, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -3,7 +3,12 @@ guid: 0e6672f684e101741bc241d2b7ef5331
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SmallMilks
+    second: {fileID: 2100000, guid: 5893d969059829d4bae6bc3a4f2068b8, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

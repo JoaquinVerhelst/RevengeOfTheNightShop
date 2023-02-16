@@ -3,7 +3,17 @@ guid: 94a53f1eead9ff54aabc2afa77f0acc0
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BigJuice
+    second: {fileID: 2100000, guid: a900cc4c21972664d88b88568bc33557, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Juice.004
+    second: {fileID: 2100000, guid: c0e8f22ded31e144380129abb6bfb725, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -3,7 +3,12 @@ guid: a3a9416c97b71e6488cf2888ec427d0e
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EnergyDrinks
+    second: {fileID: 2100000, guid: 11f23de4d49f24f4382cb21bdfe774bd, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

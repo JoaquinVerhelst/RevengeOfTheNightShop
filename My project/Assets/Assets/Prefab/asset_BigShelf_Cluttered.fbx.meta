@@ -3,7 +3,32 @@ guid: 95b95ca2d375cf34195d8423c7678e2f
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Juice
+    second: {fileID: 2100000, guid: 1e0e6a37989e76545b1957d398d5abd0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Juice1
+    second: {fileID: 2100000, guid: 160b8a5df465ef34e8576e4f47774b53, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Soda
+    second: {fileID: 2100000, guid: 24eb7da9c164a254498539b52fdf35be, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tomato
+    second: {fileID: 2100000, guid: 1ab68c1bf1876d1419992eb11ca1c60f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Trim_storage1
+    second: {fileID: 2100000, guid: ca1ce076a3868be43af8eab1de7ae1b0, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
