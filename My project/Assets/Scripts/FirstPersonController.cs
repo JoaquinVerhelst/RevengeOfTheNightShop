@@ -100,7 +100,7 @@ namespace StarterAssets
 			{
 				_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 			}
-			m_CurrentGameState = GameState.Game;
+			m_State.StartGame();
 		}
 
 		private void Start()
