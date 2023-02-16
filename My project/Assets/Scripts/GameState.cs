@@ -16,7 +16,7 @@ public class GameState : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_CurrentGameState = GameStates.Cutscene;
+        m_CurrentGameState = GameStates.Game;
     }
 
     // Update is called once per frame

@@ -168,7 +168,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2135411488}
-  - component: {fileID: 2135411491}
   - component: {fileID: 2135411489}
   m_Layer: 0
   m_Name: BottleSpawn
@@ -192,19 +191,6 @@ Transform:
   m_Father: {fileID: 5371485040957419951}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -24.806, y: 132.716, z: 44.321}
---- !u!65 &2135411491
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2135411487}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2135411489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,9 +205,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isHit: 0
   BottleObjects:
-  - {fileID: 919132149155446097, guid: 9c4f41e299766254d9e8a604df4477f4, type: 3}
+  - {fileID: 919132149155446097, guid: eb2bfa514e0f29a439e7ec477d6261e5, type: 3}
+  - {fileID: 919132149155446097, guid: 2c32c11f97e665048bf8548709e1b5a8, type: 3}
   - {fileID: 919132149155446097, guid: 6c5e4f6cbabe8e94494b129ed61d224e, type: 3}
-  - {fileID: 919132149155446097, guid: 77aa04f7f4599864087b11cc36cb15b8, type: 3}
   currentBottle: {fileID: 0}
 --- !u!1 &1180501361140409841
 GameObject:
@@ -642,6 +628,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: c383e9ee3bfc55244b8c3243ee67c4b4, type: 2}
     - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
         type: 3}
+      propertyPath: m_State
+      value: 
+      objectReference: {fileID: 4707540106819248478}
+    - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
+        type: 3}
       propertyPath: SprintSpeed
       value: 25
       objectReference: {fileID: 0}
@@ -655,10 +646,15 @@ PrefabInstance:
       propertyPath: RotationSpeed
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
+        type: 3}
+      propertyPath: m_WalkingSound
+      value: 
+      objectReference: {fileID: 7652169385017255523}
     - target: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
         type: 3}
       propertyPath: m_Name
-      value: PlayerCharacter Variant
+      value: PlayerCharacter
       objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
         type: 3}
@@ -678,17 +674,17 @@ PrefabInstance:
     - target: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.758
+      value: 69.5
       objectReference: {fileID: 0}
     - target: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2.83
       objectReference: {fileID: 0}
     - target: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.44
+      value: -40.7
       objectReference: {fileID: 0}
     - target: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
         type: 3}
@@ -774,10 +770,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60db6397f1efb164fbd5918c4fc17927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_randomGlassSound: {fileID: 0}
-  m_randomHurtSound: {fileID: 0}
+  m_randomGlassSound: {fileID: 2372094534882456281}
+  m_randomHurtSound: {fileID: 2372094534882456281}
   m_Visuals: {fileID: 0}
-  currentAmountOfBottles: 5
+  currentAmountOfBottles: 50
 --- !u!114 &2372094534882456281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -807,3 +803,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5128727758997637245}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4707540106819248478 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 466241791207729443, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
+    type: 3}
+  m_PrefabInstance: {fileID: 5128727758997637245}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3510688508390108713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0667ed70bc1d1d645b631951d518b187, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

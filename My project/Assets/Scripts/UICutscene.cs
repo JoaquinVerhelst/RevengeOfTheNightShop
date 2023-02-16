@@ -52,7 +52,7 @@ public class UICutscene : MonoBehaviour
                 {
                     m_Count.SetActive(false);
                     m_GameUI.SetActive(true);
-                    m_State.StartGame();
+                    //m_State.StartGame();
                 }
                 else
                 {
