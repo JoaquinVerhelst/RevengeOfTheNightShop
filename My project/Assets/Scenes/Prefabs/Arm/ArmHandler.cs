@@ -16,25 +16,59 @@ public class ArmHandler : MonoBehaviour
     private bool transition = false;
     private bool start = true;
 
+    //ArmHandler armHandler;
+    //HandBottle handBottle;
+
+    private bool swing;
+    private bool swingEnd = true;
+    private bool swingStart = false;
+
+
 
     private void Start()
     {
         currentTransform = endTransform;
     }
 
-    private void Update()
+    //private void Update()
+    //{
+    //    HandleSwingMovement();
+    //}
+
+
+    public void Reinitialize()
     {
-        if (start)
-        {
-
-        }
-        //else
-        //{
-        //    transform.rotation = Quaternion.Slerp(endTransform.rotation, startTransform.rotation, 10 * Time.deltaTime);
-        //}
-
+        swing = true;
+        swingEnd = true;
+        swingStart = false;
     }
 
+    public void HandleSwingMovement()
+    {
+        if (swing)
+        {
+            if (swingEnd)
+            {
+                swingEnd = SwingArmEnd();
+            }
+            else
+            {
+                swingStart = true;
+            }
+            if (swingStart)
+            {
+                swingStart = SwingArmStart();
+
+                if (!swingStart)
+                {
+                    swing = false;
+                }
+            }
+
+        }
+
+
+    }
 
 
 
@@ -53,6 +87,8 @@ public class ArmHandler : MonoBehaviour
         return true;
 
     }
+
+
     public bool SwingArmStart()
     {
 

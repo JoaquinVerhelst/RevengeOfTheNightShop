@@ -60,9 +60,6 @@ void Start()
 
     private void Update()
     {
-
-
-
         if (isAgro)
         {
             if (CheckIfTargetIsInPOV(targetTransform))

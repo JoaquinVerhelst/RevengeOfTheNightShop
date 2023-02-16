@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Windows;
 using UnityEngine.SceneManagement;
+using JetBrains.Annotations;
 
 public class PlayerLogic : MonoBehaviour
 {
@@ -34,6 +35,12 @@ public class PlayerLogic : MonoBehaviour
 
     public HealthVisuals m_Visuals;
 
+    ArmHandler armHandler;
+    HandBottle handBottle;
+
+    [SerializeField] public int currentAmountOfBottles = 5;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +56,13 @@ public class PlayerLogic : MonoBehaviour
         m_CurrentSprintTime = m_MaxSprintTime;
         m_MaxSprintCoolDown = 0.7f;
         m_sprintCoolDown = 0;
+
+
+
+        armHandler = GetComponentInChildren<ArmHandler>();
+        handBottle = GetComponentInChildren<HandBottle>();
+
+
     }
 
     // Update is called once per frame
@@ -59,11 +73,33 @@ public class PlayerLogic : MonoBehaviour
             SceneManager.LoadScene("GameOver");
         }
 
-        if (_input.attack)
+
+
+        if (_input.attack && handBottle.currentBottle != null)
         {
-            m_AttackTime = 0.5f;
+            m_AttackTime = 0.6f;
             _input.attack = false;
+            armHandler.Reinitialize();
         }
+        else
+            _input.attack = false;
+        
+
+        if (_input.reload && handBottle.currentBottle == null && currentAmountOfBottles > 0) 
+        {
+            Debug.Log("Reload");
+
+            handBottle.InstantiateBottle();
+            currentAmountOfBottles--;
+            _input.reload = false;
+        }
+
+
+        armHandler.HandleSwingMovement();
+        
+
+
+
 
         LowerTimer(ref m_AttackCoolDownTime);
 
@@ -138,14 +174,25 @@ public class PlayerLogic : MonoBehaviour
         }
     }
 
+
+
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Enemy" && m_AttackCoolDownTime == 0 && m_AttackTime != 0)
+        if (other.tag == "Enemy" && m_AttackCoolDownTime == 0 && m_AttackTime != 0 && handBottle.currentBottle != null)
         {
             Debug.Log("Hit");
             other.gameObject.GetComponent<EnemyHealth>().GetDamage();
+
             m_randomGlassSound.playSound();
+
+            handBottle.GetComponent<HandBottle>().GetDestroyed();
+
+
             m_AttackCoolDownTime = m_MaxAttackCoolDownTime;
         }
     }
+
 }
+
+
+
