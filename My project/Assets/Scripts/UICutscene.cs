@@ -11,7 +11,7 @@ public class UICutscene : MonoBehaviour
     public GameObject m_GameUI;
     public GameObject m_Textbox;
     public GameObject m_Count;
-    public FirstPersonController m_firstPersonController;
+    public GameState m_State;
 
     private float m_TimerTextBox;
     private float m_TimeBetweenCount;
@@ -52,7 +52,7 @@ public class UICutscene : MonoBehaviour
                 {
                     m_Count.SetActive(false);
                     m_GameUI.SetActive(true);
-                    m_firstPersonController.changeGameState();
+                    m_State.StartGame();
                 }
                 else
                 {
