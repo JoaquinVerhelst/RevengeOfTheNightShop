@@ -7,10 +7,10 @@ public class CollectingBeer : MonoBehaviour
 {
     // Start is called before the first frame update
     public TextMeshProUGUI collectText;
-    public GameObject objectToDestroy;
+    public GameObject objectToActivate;
     void Start()
     {
-        
+        objectToActivate.SetActive(false);
     }
 
     // Update is called once per frame
@@ -24,7 +24,7 @@ public class CollectingBeer : MonoBehaviour
         if (other.tag == "Player")
         {
             collectText.text = "Find the exit";
-            Destroy(objectToDestroy);
+            objectToActivate.SetActive(true);
             Destroy(this.gameObject);
         }
     }
